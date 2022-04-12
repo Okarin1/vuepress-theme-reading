@@ -9,7 +9,7 @@
 
 This is a purely for reading theme, does not support code highlighting, in addition the font is preset `cursive`, you can try to preview the demo first before deciding whether to use this theme.
 
-这是一个纯粹的阅读主题，不支持代码高亮，另外字体预设为楷体，你可以先试着预览一下我的Demo，再决定是否使用这个主题。
+这是一个纯粹的阅读主题，不支持代码高亮，另外字体预设为楷体，你可以先试试[预览我的Demo](https://reading.okarin.cn)，再决定是否使用这个主题。
 
 ## Installation
 
