@@ -1,5 +1,5 @@
 
-# vuepress-theme-simple
+# vuepress-theme-reading
 
 >A clean and minimalist theme for Vuepress !
 
