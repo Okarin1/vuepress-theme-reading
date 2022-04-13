@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-reading",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pure Reading Theme for Vuepress",
   "main": "index.js",
   "repository": "git@github.com:Okarin1/vuepress-theme-reading.git",
