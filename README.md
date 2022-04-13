@@ -2,7 +2,7 @@
 # vuepress-theme-reading
 
 [![npm](https://img.shields.io/npm/v/vuepress-theme-reading.svg)](https://www.npmjs.com/package/vuepress-theme-reading)
-[![LICENSE](https://img.shields.io/npm/l/vuepress-theme-reading.svg)](https://github.com/viko16/vuepress-theme-reading/blob/master/LICENSE)
+[![LICENSE](https://img.shields.io/npm/l/vuepress-theme-reading.svg)](https://github.com/okarin1/vuepress-theme-reading/blob/master/LICENSE)
 
 >A clean and minimalist theme for Vuepress !
 
