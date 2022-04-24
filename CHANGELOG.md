@@ -1,3 +1,6 @@
+## 1.2.0
+- refactor the post sort method
+
 ## 1.1.0
 - sort posts by date
 - post display author and date
