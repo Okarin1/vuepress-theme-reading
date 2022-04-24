@@ -3,12 +3,8 @@
     <div class="post-head">
       <div class="post-info">
         <router-link to="/" :title="$description"> ← Home </router-link>
-        <time
-          v-if="$page.frontmatter.date"
-          :datetime="$page.frontmatter.date"
-          :title="$page.frontmatter.date"
-        >
-          {{ formatDate($page.frontmatter.date) }}
+        <time v-if="$page.frontmatter.date" :datetime="$page.frontmatter.date" :title="$page.frontmatter.date">
+          {{ formatDateHeader($page.frontmatter.date) }}
         </time>
       </div>
       <h1 v-if="$page.title" class="post-title">
@@ -23,17 +19,11 @@
   </section>
 </template>
 <script>
+import { formatDate } from "../helpers/utils";
 export default {
   methods: {
-    formatDate(date) {
-      let formatDate = new Date(date);
-      let year = formatDate.getFullYear();
-      let mouth = formatDate.getMonth() + 1;
-      let day = formatDate.getDate();
-      function padLeftZero(str) {
-        return (str = str < 10 ? "0" + str : str);
-      }
-      return `${year}/${padLeftZero(mouth)}/${padLeftZero(day)}`;
+    formatDateHeader(date) {
+      return formatDate(date, "yyyy-MM-dd");
     },
   },
 };
