@@ -1,3 +1,6 @@
+## 1.2.1
+- add post previous and  next 
+
 ## 1.2.0
 - refactor the post sort method
 
