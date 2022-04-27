@@ -12,15 +12,37 @@
       </h1>
       <p class="post-author" v-if="$page.frontmatter.author">
         {{ $page.frontmatter.author }}
-      </p>
+        </p>
     </div>
-
     <Content class="post-content" />
+    <div class="post-footer">
+      <router-link v-if="PreNext.pre" :to="PreNext.pre.path">上一篇：{{ PreNext.pre.title }}</router-link>
+      <router-link v-if="PreNext.next" :to="PreNext.next.path">下一篇：{{ PreNext.next.title }}</router-link>
+    </div>
   </section>
 </template>
 <script>
 import { formatDate } from "../helpers/utils";
+import { filterPosts, sortPostsByDate } from "../helpers/postData";
 export default {
+  computed: {
+    Posts() {
+      let posts = this.$site.pages;
+      posts = filterPosts(posts);
+      sortPostsByDate(posts);
+      return posts;
+    },
+    PreNext() {
+      const posts = this.Posts.map((res) => {
+        return res.title;
+      });
+      const index = posts.findIndex((element) => {
+        return element == this.$page.title;
+      });
+
+      return { pre: this.Posts[index - 1], next: this.Posts[index + 1] };
+    },
+  },
   methods: {
     formatDateHeader(date) {
       return formatDate(date, "yyyy-MM-dd");
@@ -62,4 +84,10 @@ export default {
 
         a
           color linkColor
+    .post-footer
+      margin-top 4rem
+      display flex
+      justify-content space-between
+      @media (max-width: 600px)
+          flex-flow column wrap
 </style>
