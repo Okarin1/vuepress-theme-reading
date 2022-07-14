@@ -1,14 +1,10 @@
 <template>
-  <div class="list-view">
-    <ul class="list" v-for="item of orderList" :key="item.key">
-      <h2 class="list-year">{{ item.date }}</h2>
-      <li v-for="page of item.data" :key="page.title" class="list-item">
-        <span class="item-date" v-if="page.frontmatter.date">
-          {{ formatDateTitle(page.frontmatter.date) }}
-        </span>
-        <router-link :to="page.path" class="item-title">
-          {{ page.title }}
-        </router-link>
+  <div class="timeline-wrapper">
+    <ul class="timeline-content" v-for="item of orderList" :key="item.date">
+      <h2 class="year">{{ item.date }}</h2>
+      <li v-for="page of item.data" :key="page.title">
+        <span class="date" v-if="page.frontmatter.date">{{ formatDateTitle(page.frontmatter.date) }}</span>
+        <router-link :to="page.path">{{ page.title }}</router-link>
       </li>
     </ul>
   </div>
@@ -17,7 +13,6 @@
 <script>
 import { formatDate } from "../helpers/utils";
 import { filterPosts, sortPostsByDate, categoryPostsByDate } from "../helpers/postData";
-
 export default {
   computed: {
     Posts() {
@@ -28,20 +23,22 @@ export default {
     },
     orderList() {
       let postList = this.Posts;
-      const sortList = categoryPostsByDate(postList, "yyyy", "Other");
-      return sortList;
+      const sortedList = categoryPostsByDate(postList, "yyyy", "Other");
+      return sortedList;
     },
   },
   methods: {
-    //format time
     formatDateTitle(date) {
       return formatDate(date, "MM/dd");
+    },
+    go(path) {
+      this.$router.push(path);
     },
   },
 };
 </script>
 <style lang="stylus" scoped>
-.list-year
-  margin-left -2rem
+.year
+  margin-left -1rem
   margin-bottom 1rem
 </style>

@@ -1,0 +1,41 @@
+@import "./base.styl";
+
+
+.post-view
+    position relative
+
+    .post-head
+      position relative
+      margin-bottom 4rem
+
+    .post-info
+      display flex
+      flex-flow row nowrap
+      justify-content space-between
+
+    .post-title
+      text-align center
+      font-size fontSize * 2
+      margin-bottom 10px
+      line-height 1
+
+    .post-author
+      text-align center
+      font-size fontSize * 0.8
+
+    .post-content
+        p
+          text-indent 2rem
+          text-align justify
+          img
+            margin-left -2rem
+
+        a
+          color linkColor !important
+    .post-footer
+        margin-top 4rem
+        display flex
+        justify-content space-between
+        @media (max-width: 600px)
+            flex-flow column wrap
+   
