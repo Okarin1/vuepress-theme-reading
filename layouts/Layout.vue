@@ -43,7 +43,7 @@ export default {
   },
   data(){
     return {
-      categoryByDate:false
+      categoryByDate:true
     }
   },
   computed: {
