@@ -1,5 +1,16 @@
-## 2.0.1
+## 2.1.0
 >Significant Updates !
+
+- Add article categories
+- Toggle sorting method
+- Note: Important style update (changed the font-family)!
+
+- 新增文章分类
+- 切换排序方法
+- 注意：重要的样式更新(更换了显示的字体)!
+
+
+## 2.0.1
 
 - Night mode adaptation
 - Show article list
