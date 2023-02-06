@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="readerControls">
-      <control-item @click.native="backToHome()">
+      <control-item v-show="!isHome" @click.native="backToHome()">
         <button class="icon home"></button>
       </control-item>
       <control-item @click.native="showSide()">
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import ControlItem from "./ControlItem.vue";
-import SideBar from "./SideBar.vue";
+import ControlItem from "./ControlItem.vue"
+import SideBar from "./SideBar.vue"
 export default {
   components: { ControlItem, SideBar },
   name: "ThemeSwitcher",
@@ -28,39 +28,49 @@ export default {
     return {
       isLight: true,
       isShow: false,
-    };
+    }
   },
 
   methods: {
     themeSwitch() {
-      this.isLight = !this.isLight;
-      let htmlTag = document.getElementsByTagName("html")[0];
+      this.isLight = !this.isLight
+      let htmlTag = document.getElementsByTagName("html")[0]
       if (this.isLight) {
-        window.localStorage.setItem("theme", "light");
-        htmlTag.setAttribute("data-theme", "light");
+        window.localStorage.setItem("theme", "light")
+        htmlTag.setAttribute("data-theme", "light")
       } else {
-        window.localStorage.setItem("theme", "dark");
-        htmlTag.setAttribute("data-theme", "dark");
-        this.$emit("themeMode", "dark");
+        window.localStorage.setItem("theme", "dark")
+        htmlTag.setAttribute("data-theme", "dark")
+        this.$emit("themeMode", "dark")
       }
     },
     showSide() {
-      this.isShow = !this.isShow;
+      if(this.isHome){
+        this.$parent.toggleCategory()
+      }
+      else{
+        this.isShow = !this.isShow
+      }
     },
     backToHome() {
-      this.$router.push("/");
+      this.$router.push("/")
     },
     backToTop() {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0)
     },
   },
-  mounted() {
-    let mode = window.localStorage.getItem("theme");
-    if (mode == "dark") {
-      this.isLight = false;
+  computed:{
+    isHome(){
+      return this.$page.path === "/";
     }
   },
-};
+  mounted() {
+    let mode = window.localStorage.getItem("theme")
+    if (mode == "dark") {
+      this.isLight = false
+    }
+  },
+}
 </script>
 
 <style lang="stylus" scope>

@@ -21,35 +21,36 @@
   </section>
 </template>
 <script>
-import { formatDate } from "../helpers/utils";
-import { filterPosts, sortPostsByDate } from "../helpers/postData";
-import ReaderControls from "./ReaderControls.vue";
+import { formatDate } from "../helpers/utils"
+import ReaderControls from "./ReaderControls.vue"
 export default {
   components: { ReaderControls },
-  computed: {
-    Posts() {
-      let posts = this.$site.pages;
-      posts = filterPosts(posts);
-      sortPostsByDate(posts);
-      return posts;
+  props: {
+    orderList: {
+      type: Array,
+      default: () => {
+        return [];
+      },
     },
+  },
+  computed: {
     PreNext() {
-      const posts = this.Posts.map((res) => {
-        return res.title;
-      });
+      const posts = this.orderList.map((res) => {
+        return res.title
+      })
       const index = posts.findIndex((element) => {
-        return element == this.$page.title;
-      });
+        return element == this.$page.title
+      })
 
-      return { pre: this.Posts[index - 1], next: this.Posts[index + 1] };
+      return { pre: this.orderList[index - 1], next: this.orderList[index + 1] }
     },
   },
   methods: {
     formatDateHeader(date) {
-      return formatDate(date, "yyyy-MM-dd");
+      return formatDate(date, "yyyy-MM-dd")
     },
   },
-};
+}
 </script>
 <style lang="stylus" scope>
 @require '../styles/index.styl'

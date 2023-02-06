@@ -33,6 +33,12 @@ export function compareDate(a, b) {
   return bDateNum - aDateNum
 }
 
+export function compareCategory(a,b){
+  const aDate = (a.frontmatter.category)?1:0
+  const bDate = (b.frontmatter.category)?1:0
+  return bDate - aDate
+}
+
 // 获取时间的数字类型
 export function getTimeNum(date) {
   const dateNum = !date ? 0 : new Date(date).getTime()

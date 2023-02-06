@@ -1,4 +1,4 @@
-import { compareDate, formatDate } from "./utils"
+import { compareDate,compareCategory,formatDate } from "./utils"
 
 // 过滤博客数据
 export function filterPosts(posts) {
@@ -6,15 +6,24 @@ export function filterPosts(posts) {
   return posts
 }
 
-// 排序博客数据
+// 按Date排序博客数据
 export function sortPostsByDate(posts) {
   posts.sort((prev, next) => {
     return compareDate(prev, next)
   })
 }
 
-// 分类博客数据
+// 按分类博客数据
+export function sortPostsByCategory(posts) {
+  posts.sort((prev, next) => {
+    return compareCategory(prev, next)
+  })
+}
+
+
+// 按date分类博客数据
 export function categoryPostsByDate(postList, fmt, noDate) {
+  sortPostsByDate(postList)
   let dateArr = []
   const sortList = []
   postList.forEach((res, i) => {
@@ -31,17 +40,38 @@ export function categoryPostsByDate(postList, fmt, noDate) {
   return sortList
 }
 
+// 按category分类博客数据
+export function categoryPostsByCategory(postList,noCategory) {
+  sortPostsByCategory(postList)
+  let categoryArr = []
+  const sortList = []
+  postList.forEach((res, i) => {
+    let postCategory = postList[i].frontmatter.category
+    if (postCategory) {
+      //Order by fmt
+      categoryPosts(postList, categoryArr, sortList, postCategory, i)
+    } else {
+      //Other No Order
+      categoryPosts(postList, categoryArr, sortList, noCategory, i)
+    }
+  })
+  sortList.forEach(item=>{
+    sortPostsByDate(item.data)
+  })
+  return sortList
+}
+
 // 分类函数
-export function categoryPosts(postList, dateArr, sortList, category, i) {
-  if (dateArr.indexOf(category) === -1) {
+export function categoryPosts(postList, cateArr, sortList, category, i) {
+  if (cateArr.indexOf(category) === -1) {
     sortList.push({
-      date: category,
+      category,
       data: [postList[i]],
     })
-    dateArr.push(category)
+    cateArr.push(category)
   } else {
     sortList.forEach((currentValue, index) => {
-      if (sortList[index].date == category) {
+      if (sortList[index].category == category) {
         sortList[index].data.push(postList[i])
       }
     })
