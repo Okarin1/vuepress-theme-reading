@@ -1,7 +1,7 @@
 ## 2.1.0
 >Significant Updates !
 
-- Add article categories
+- Add article category
 - Toggle sorting method
 - Note: Important style update (changed the font-family)!
 
