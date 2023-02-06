@@ -8,9 +8,8 @@
 
 >一款干净极简的 vuepress 主题 !
 
-![preview](https://s2.loli.net/2022/07/14/7nGeUOmh6yFEAKa.png)
-
-Demo： [Preview Demo](https://reading.okarin.cn)
+![preview](https://s2.loli.net/2023/02/07/vrNPOnGLlUhSqY6.png)
+Demo： [预览 Demo](https://reading.okarin.cn)
 
 ## 
 
@@ -42,9 +41,15 @@ module.exports = {
 - 标题 (需要)
 - 日期 (可选)
 - 作者 (可选)
+- 分类 (可选)
 
-请在`.md`文件中提供一个`标题`，它将显示在首页，以及文章标题中。
-数据 "将决定文章在首页的排列顺序，"作者 "将显示在标题下。
+请在`.md`文件中提供一个 `title` 标题，它将显示在首页，以及文章标题中。
+
+日期 `date`将决定文章在首页的排列顺序
+
+作者 `author` 将显示在标题下,
+
+分类 `category` 在首页可以将文章按分类排序。
 
 
 
@@ -53,6 +58,7 @@ module.exports = {
 title: 标题
 date: 2022-02-22
 author: Okarin
+category: 测试
 ---
 
 ## H2
@@ -74,7 +80,7 @@ author: Okarin
 
 >A clean and minimalist theme for Vuepress !
 
-![preview](https://s2.loli.net/2022/07/14/7nGeUOmh6yFEAKa.png)
+![preview](https://s2.loli.net/2023/02/07/vrNPOnGLlUhSqY6.png)
 
 Demo： [Preview Demo](https://reading.okarin.cn)
 
@@ -137,17 +143,22 @@ But to prevent errors, please **provide an empty `README.md` file.**
 - title (Required)
 - date (Optional)
 - author (Optional)
+- category(Optional)
 
-Please provide a `title` at `.md` files that will be displayed on the front page, as well as in the article header,
-the `data` will determine the order in which articles are laid out on the front page,and the `author` will be displayed under the title.
+Please provide a `title` heading in the `.md` file, which will be displayed on the front page, as well as in the article title;
 
+The date `date` will determine the order of the articles on the front page;
 
+author `author` will be displayed under the title;
+
+Category `category` will sort the articles by category on the front page.
 
 ```
 ---
 title: This is Title
 date: 2022-02-22
 author: Okarin
+category: test
 ---
 
 ## H2
