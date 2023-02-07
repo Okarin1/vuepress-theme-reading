@@ -1,14 +1,14 @@
 <template>
   <div class="timeline-wrapper">
-      <ul class="timeline-content" v-for="item of sortedList" :key="item.category">
-        <ul style="padding: 0">
-          <h2 class="category">{{ item.category }}</h2>
-          <li v-for="page of item.data" :key="page.title">
-            <span class="date" v-if="page.frontmatter.date">{{ formatDateTitle(page.frontmatter.date) }}</span>
-            <router-link :to="page.path">{{ page.title }}</router-link>
-          </li>
-        </ul>
+    <ul class="timeline-content" v-for="item of sortedList" :key="item.category">
+      <ul style="padding: 0">
+        <h2 class="category">{{ item.category }}</h2>
+        <li v-for="page of item.data" :key="page.title">
+          <span class="date" v-if="showDate && page.frontmatter.date">{{ formatDateTitle(page.frontmatter.date) }}</span>
+          <router-link :to="page.path">{{ page.title }}</router-link>
+        </li>
       </ul>
+    </ul>
   </div>
 </template>
 
@@ -22,6 +22,10 @@ export default {
         return [];
       },
     },
+    categoryByDate: {
+      type: Boolean,
+      default: true,
+    },
   },
   methods: {
     formatDateTitle(date) {
@@ -29,6 +33,15 @@ export default {
     },
     go(path) {
       this.$router.push(path);
+    },
+  },
+  computed: {
+    category() {
+      let sortMethod = this.$themeConfig.sortMethod || "date";
+      return sortMethod == "date";
+    },
+    showDate() {
+      return this.categoryByDate;
     },
   },
 };
