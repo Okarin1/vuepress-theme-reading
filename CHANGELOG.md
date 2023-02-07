@@ -1,5 +1,15 @@
-## 2.1.1
+## 2.2.1
 >Significant Updates !
+- Some bug fixes
+- Add categories as configurable items
+- Code highlighting is now supported!
+
+- 一些bug的修复
+- 将分类添加为可配置项
+- 现已支持代码高亮！
+
+
+## 2.1.1
 
 - Add article category
 - Toggle sorting method
