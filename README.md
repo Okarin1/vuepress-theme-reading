@@ -20,6 +20,7 @@ Demo： [预览 Demo](https://reading.okarin.cn)
 **注意：当前文件仅为主题的相关代码** ，如果你如果你想使用 reading 主题，可以参考该模板页面进行配置 [(模板地址)](https://github.com/okarin1/reading-project) ，或者直接克隆模板。
 
 
+
 ## 主题配置
 
 在 `.vuepress/config.js` 之中进行基本的配置 
@@ -32,6 +33,7 @@ module.exports = {
     themeConfig: {
       author:'Your Name',// 页脚
       authorLink: 'https://xxx.com', //点击你的名字的跳转链接
+      sortMethod:'date'//排序方式（category/date）
     }
   }
 ```
@@ -69,7 +71,6 @@ category: 测试
 
 
 ---
-
 
 
 # vuepress-theme-reading
@@ -127,6 +128,7 @@ module.exports = {
     themeConfig: {
       author:'Your Name',// will display on the footer
       authorLink: 'https://xxx.com', //click your name to this site
+      sortMethod:'date'//sort method
     }
   }
 ```
