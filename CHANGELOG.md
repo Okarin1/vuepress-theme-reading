@@ -1,3 +1,8 @@
+## 2.22
+- little bug fixes
+
+- 一点bug的修复
+
 ## 2.2.1
 >Significant Updates !
 - Some bug fixes
