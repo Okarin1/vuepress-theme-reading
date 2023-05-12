@@ -94,6 +94,8 @@ export default {
     display none
   @media only screen and (max-width: 768px)
     display none
+  @media only print 
+    display none
 
   button
     background none
