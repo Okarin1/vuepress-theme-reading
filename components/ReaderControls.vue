@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       isLight: true,
-      isShow: localStorage.getItem('sidebarState') !== 'closed'
+      isShow: false
     }
   },
   props: {
@@ -38,6 +38,7 @@ export default {
   },
   methods: {
     themeSwitch() {
+      if (typeof window === 'undefined' || !window) return
       this.isLight = !this.isLight
       let htmlTag = document.getElementsByTagName("html")[0]
       if (this.isLight) {
@@ -50,8 +51,9 @@ export default {
       }
     },
     showSide() {
+      if (typeof window === 'undefined' || !window) return
       this.isShow = !this.isShow
-      localStorage.setItem('sidebarState', this.isShow ? 'open' : 'closed')
+      window.localStorage.setItem('sidebarState', this.isShow ? 'open' : 'closed')
     },
     backToHome() {
       if (this.isHome) {
@@ -71,18 +73,22 @@ export default {
   },
   watch: {
     '$route.path'() {
-      this.isShow = localStorage.getItem('sidebarState') !== 'closed'
+      if (typeof window !== 'undefined' && window) {
+        this.isShow = window.localStorage.getItem('sidebarState') !== 'closed'
+      }
     }
   },
   mounted() {
-    let mode = window.localStorage.getItem("theme")
-    if (mode == "dark") {
-      this.isLight = false
-    }
-    
-    if (!localStorage.getItem('sidebarState')) {
-      localStorage.setItem('sidebarState', 'open')
-      this.isShow = true
+    if (typeof window !== 'undefined' && window) {
+      let mode = window.localStorage.getItem("theme")
+      if (mode == "dark") {
+        this.isLight = false
+      }
+      
+      if (!window.localStorage.getItem('sidebarState')) {
+        window.localStorage.setItem('sidebarState', 'open')
+      }
+      this.isShow = window.localStorage.getItem('sidebarState') !== 'closed'
     }
   },
 }
