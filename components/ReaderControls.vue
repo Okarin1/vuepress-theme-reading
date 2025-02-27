@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="readerControls">
-      <control-item v-show="!isHome" @click.native="backToHome()">
+      <control-item @click.native="backToHome()">
         <button class="icon home"></button>
       </control-item>
       <control-item @click.native="showSide()">
@@ -14,7 +14,7 @@
         <button class="icon top"></button>
       </control-item>
     </div>
-    <side-bar v-show="isShow"></side-bar>
+    <side-bar v-show="isShow" :categories="sortedList"></side-bar>
   </div>
 </template>
 
@@ -27,10 +27,15 @@ export default {
   data() {
     return {
       isLight: true,
-      isShow: false,
+      isShow: localStorage.getItem('sidebarState') !== 'closed'
     }
   },
-
+  props: {
+    sortedList: {
+      type: Array,
+      default: () => []
+    }
+  },
   methods: {
     themeSwitch() {
       this.isLight = !this.isLight
@@ -45,15 +50,15 @@ export default {
       }
     },
     showSide() {
-      if(this.isHome){
-        this.$parent.toggleCategory()
-      }
-      else{
-        this.isShow = !this.isShow
-      }
+      this.isShow = !this.isShow
+      localStorage.setItem('sidebarState', this.isShow ? 'open' : 'closed')
     },
     backToHome() {
-      this.$router.push("/")
+      if (this.isHome) {
+        this.$parent.toggleCategory()
+      } else {
+        this.$router.push("/")
+      }
     },
     backToTop() {
       window.scrollTo(0, 0)
@@ -64,10 +69,20 @@ export default {
       return this.$page.path === "/";
     }
   },
+  watch: {
+    '$route.path'() {
+      this.isShow = localStorage.getItem('sidebarState') !== 'closed'
+    }
+  },
   mounted() {
     let mode = window.localStorage.getItem("theme")
     if (mode == "dark") {
       this.isLight = false
+    }
+    
+    if (!localStorage.getItem('sidebarState')) {
+      localStorage.setItem('sidebarState', 'open')
+      this.isShow = true
     }
   },
 }

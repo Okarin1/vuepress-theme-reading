@@ -1,9 +1,9 @@
 <template>
   <div class="timeline-wrapper">
-    <ul class="timeline-content" v-for="item of sortedList" :key="item.category">
+    <ul class="timeline-content" v-for="(item, index) of sortedList" :key="item.category + index">
       <ul style="padding: 0">
         <h2 class="category">{{ item.category }}</h2>
-        <li v-for="page of item.data" :key="page.title">
+        <li v-for="page of item.data" :key="page.path">
           <span class="date" v-if="showDate && page.frontmatter.date">{{ formatDateTitle(page.frontmatter.date) }}</span>
           <router-link :to="page.path">{{ page.title }}</router-link>
         </li>

@@ -1,4 +1,12 @@
-## 2.22
+## 2.3.1
+
+- Bug fixes
+- Add sidebar to homepage
+
+- 修复了一些bug
+- 添加了首页侧边栏
+
+## 2.2.2
 - little bug fixes
 
 - 一点bug的修复
