@@ -11,7 +11,7 @@
         <home :sortedList="sortedList" :categoryByDate="categoryByDate" v-if="isHome" />
         <post :orderList="orderList" v-else />
       </div>
-      <reader-controls v-show="isHome"></reader-controls>
+      <reader-controls v-show="isHome" :sortedList="sortedList"></reader-controls>
     </main>
     <footer-bar v-show="isHome" />
   </div>
