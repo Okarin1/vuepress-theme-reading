@@ -11,7 +11,7 @@
         <home :sortedList="sortedList" :categoryByDate="categoryByDate" v-if="isHome" />
         <post :orderList="orderList" v-else />
       </div>
-      <reader-controls v-show="isHome" :sortedList="sortedList"></reader-controls>
+      <reader-controls v-show="isHome" :sortedList="sortedList" :categoryByDate="categoryByDate"></reader-controls>
     </main>
     <footer-bar v-show="isHome" />
   </div>
@@ -22,6 +22,7 @@ import Home from "../components/Home";
 import Post from "../components/Post";
 import FooterBar from "../components/FooterBar";
 import { filterPosts, categoryPostsByDate, categoryPostsByCategory } from "../helpers/postData";
+import { getTexts } from "../helpers/i18n";
 import ReaderControls from "../components/ReaderControls.vue";
 export default {
   components: {
@@ -54,6 +55,9 @@ export default {
     };
   },
   computed: {
+    texts() {
+      return getTexts(this.$themeConfig);
+    },
     isHome() {
       return this.$page.path === "/";
     },
@@ -65,10 +69,10 @@ export default {
     sortedList() {
       let postList = this.posts;
       if (this.categoryByDate) {
-        const sortedList = categoryPostsByDate(postList, "yyyy", "Other");
+        const sortedList = categoryPostsByDate(postList, "yyyy", this.texts.otherCategory);
         return sortedList;
       } else {
-        const sortedList = categoryPostsByCategory(postList, "其他");
+        const sortedList = categoryPostsByCategory(postList, this.texts.otherCategory);
         return sortedList;
       }
     },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="side-bar">
-      <h2>{{ isHome ? '分类' : '目录' }}</h2>
+      <h2>{{ isHome ? (categoryByDate ? texts.sidebarTime : texts.sidebarCategory) : texts.sidebarToc }}</h2>
       <template v-if="isHome">
         <li v-for="(item, index) in categories" :key="item.category" @click="categoryClick(item.category, index)">
           <a class="side-link" :class="{ active: index == currentIndex }">{{ item.category }} ({{ item.data.length }})</a>
@@ -11,18 +11,23 @@
         <li v-for="(item, index) in headers" :key="item.title" @click="sideClick(item.slug, index)">
         <a class="side-link" :href="`#${item.slug}`" :class="{ active: index == currentIndex }">{{ item.title }}</a>
       </li>
-        <li v-if="!headers">该文章无目录</li>
+        <li v-if="!headers">{{ texts.noToc }}</li>
       </template>
     </ul>
   </div>
 </template>
 
 <script>
+import { getTexts } from "../helpers/i18n"
 export default {
   props: {
     categories: {
       type: Array,
       default: () => []
+    },
+    categoryByDate: {
+      type: Boolean,
+      default: true
     },
     showCategories: {
       type: Boolean,
@@ -45,6 +50,9 @@ export default {
     },
   },
   computed: {
+    texts() {
+      return getTexts(this.$themeConfig)
+    },
     isHome() {
       return this.$page.path === "/"
     }

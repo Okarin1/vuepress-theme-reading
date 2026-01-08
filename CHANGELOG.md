@@ -1,26 +1,38 @@
+## 2.4.1
+
+- Added article search functionality
+- Added internationalization support with Chinese and English language switching
+- Improved button styling by unifying buttons to SVG format and adding tooltip hints
+
+- 新增文章搜索功能
+- 新增国际化支持，可在中 / 英文之间切换
+- 优化按钮显示样式，统一调整为 SVG 模式，并添加提示信息
+
 ## 2.3.3
 
 - Bug fixes
 - Add sidebar to homepage
 
-- 修复了一些bug
+- 修复了一些 bug
 - 添加了首页侧边栏
 
 ## 2.2.2
+
 - little bug fixes
 
-- 一点bug的修复
+- 一点 bug 的修复
 
 ## 2.2.1
->Significant Updates !
+
+> Significant Updates !
+
 - Some bug fixes
 - Add categories as configurable items
 - Code highlighting is now supported!
 
-- 一些bug的修复
+- 一些 bug 的修复
 - 将分类添加为可配置项
 - 现已支持代码高亮！
-
 
 ## 2.1.1
 
@@ -31,7 +43,6 @@
 - 新增文章分类
 - 切换排序方法
 - 注意：重要的样式更新(更换了显示的字体)!
-
 
 ## 2.0.1
 
@@ -46,14 +57,17 @@
 - 一些样式更新
 
 ## 1.2.1
-- Add post previous and  next 
+
+- Add post previous and next
 - 添加上一篇和下一篇
 
 ## 1.2.0
+
 - Refactor the post sort method
 - 重构排序方法
 
 ## 1.1.0
+
 - Sort posts by date
 - Post display author and date
 - Some style change
@@ -62,8 +76,9 @@
 - 展示文章作者以及日期
 - 一些样式更新
 
-## 1.0.3 
->The first version !
+## 1.0.3
+
+> The first version !
 
 - Show Markdown files
 - Add site title and description

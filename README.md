@@ -1,4 +1,3 @@
-
 # vuepress-theme-reading
 
 [![npm](https://img.shields.io/npm/v/vuepress-theme-reading)](https://www.npmjs.com/package/vuepress-theme-reading)
@@ -6,36 +5,33 @@
 
 ## 简介
 
->一款干净极简的 vuepress 主题 !
+> 一款干净极简的 vuepress 主题 !
 
 ![preview](https://s2.loli.net/2023/02/07/vrNPOnGLlUhSqY6.png)
 Demo： [预览 Demo](https://reading.okarin.cn)
 
-## 
-
-
+##
 
 ## 使用主题
 
 **注意：当前文件仅为主题的相关代码** ，如果你如果你想使用 reading 主题，可以参考该模板页面进行配置 [(模板地址)](https://github.com/okarin1/reading-project) ，或者直接克隆模板。
 
-
-
 ## 主题配置
 
-在 `.vuepress/config.js` 之中进行基本的配置 
+在 `.vuepress/config.js` 之中进行基本的配置
 
 ```js
 module.exports = {
-    title: 'The Title', // 将会作为标题展示
-    description: 'Your own description', // 将会在标题下面展示描述
-    theme: 'reading',
-    themeConfig: {
-      author:'Your Name',// 页脚
-      authorLink: 'https://xxx.com', //点击你的名字的跳转链接
-      sortMethod:'date'//排序方式（category/date）
-    }
-  }
+  title: "The Title", // 将会作为标题展示
+  description: "Your own description", // 将会在标题下面展示描述
+  theme: "reading",
+  themeConfig: {
+    author: "Your Name", // 页脚
+    authorLink: "https://xxx.com", //点击你的名字的跳转链接
+    sortMethod: "date", //排序方式（category/date）
+    language: "zh", //语言（zh/en）
+  },
+};
 ```
 
 ## MarkDown
@@ -53,8 +49,6 @@ module.exports = {
 
 分类 `category` 在首页可以将文章按分类排序。
 
-
-
 ```
 ---
 title: 标题
@@ -69,17 +63,14 @@ category: 测试
 
 ```
 
-
 ---
-
 
 # vuepress-theme-reading
 
 [![npm](https://img.shields.io/npm/v/vuepress-theme-reading)](https://www.npmjs.com/package/vuepress-theme-reading)
 [![NPM](https://img.shields.io/npm/l/vuepress-theme-reading)](https://github.com/okarin1/vuepress-theme-reading/blob/master/LICENSE)
 
-
->A clean and minimalist theme for Vuepress !
+> A clean and minimalist theme for Vuepress !
 
 ![preview](https://s2.loli.net/2023/02/07/vrNPOnGLlUhSqY6.png)
 
@@ -89,54 +80,53 @@ Demo： [Preview Demo](https://reading.okarin.cn)
 
 **Note: The current file is only the code related to the theme**, if you if you want to use this theme, you can refer to the template page for configuration[(emplate address)](https://github.com/okarin1/reading-project), or directly clone the template.
 
-
 ## Use Theme in Vuepress
 
 If you want to create a new blog using reading. You can follow these steps after setting up the [Vuepress](https://www.vuepress.cn/) environments.
 
 When you successfully run a vuepress docs, you should have template like this :
+
 ```
 .
 ├── docs(you named this file)
-│   ├── .vuepress 
-│   │   │  
-│   │   └──  config.js 
-│   │   
+│   ├── .vuepress
+│   │   │
+│   │   └──  config.js
+│   │
 │   └──  README.md
 │
 └── package.json
 ```
 
-you can modify the theme on `.vuepress/config.js` 
-
+you can modify the theme on `.vuepress/config.js`
 
 ```js
 module.exports = {
-  theme: 'reading',
-}
+  theme: "reading",
+};
 ```
 
 ## Theme Config
 
-Some additional settings in `.vuepress/config.js` 
+Some additional settings in `.vuepress/config.js`
 
 ```js
 module.exports = {
-    title: 'The Title', // will display on the title
-    description: 'Your own description', // will display under the title
-    theme: 'reading',
-    themeConfig: {
-      author:'Your Name',// will display on the footer
-      authorLink: 'https://xxx.com', //click your name to this site
-      sortMethod:'date'//sort method
-    }
-  }
+  title: "The Title", // will display on the title
+  description: "Your own description", // will display under the title
+  theme: "reading",
+  themeConfig: {
+    author: "Your Name", // will display on the footer
+    authorLink: "https://xxx.com", //click your name to this site
+    sortMethod: "date", //sort method
+    language: "zh", //language（zh/en）
+  },
+};
 ```
-
 
 ## About Post
 
-All your `.md` files except `README.md` file will be displayed on the Home page. 
+All your `.md` files except `README.md` file will be displayed on the Home page.
 
 But to prevent errors, please **provide an empty `README.md` file.**
 
@@ -169,4 +159,3 @@ Here is the text, if you have to read what I wrote,
 congratulations on wasting a precious minute of your life.
 
 ```
-

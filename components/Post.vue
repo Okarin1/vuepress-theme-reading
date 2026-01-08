@@ -2,7 +2,7 @@
   <section class="post-view">
     <div class="post-head">
       <div class="post-info">
-        <router-link to="/" :title="$description">Home</router-link>
+        <router-link to="/" :title="$description">{{ texts.home }}</router-link>
         <time v-if="$page.frontmatter.date" :datetime="$page.frontmatter.date" :title="$page.frontmatter.date">
           {{ formatDateHeader($page.frontmatter.date) }}
         </time>
@@ -14,14 +14,15 @@
     </div>
     <Content class="post-content" />
     <div class="post-footer">
-      <router-link v-if="PreNext.pre" :to="PreNext.pre.path">上一篇：{{ PreNext.pre.title }}</router-link>
-      <router-link v-if="PreNext.next" :to="PreNext.next.path">下一篇：{{ PreNext.next.title }}</router-link>
+      <router-link v-if="PreNext.pre" :to="PreNext.pre.path">{{ texts.prevPost }}{{ PreNext.pre.title }}</router-link>
+      <router-link v-if="PreNext.next" :to="PreNext.next.path">{{ texts.nextPost }}{{ PreNext.next.title }}</router-link>
     </div>
     <reader-controls></reader-controls>
   </section>
 </template>
 <script>
 import { formatDate } from "../helpers/utils"
+import { getTexts } from "../helpers/i18n"
 import ReaderControls from "./ReaderControls.vue"
 export default {
   components: { ReaderControls },
@@ -34,6 +35,9 @@ export default {
     },
   },
   computed: {
+    texts() {
+      return getTexts(this.$themeConfig)
+    },
     PreNext() {
       const posts = this.orderList.map((res) => {
         return res.title
